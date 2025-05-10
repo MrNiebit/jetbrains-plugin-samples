@@ -19,9 +19,11 @@
 2.	生成 plugin.xml 和相关元信息；
 3.	打包成一个 .zip 插件文件，存放在以下路径：`build/distributions/<your-plugin-name>.zip`
 
+
 📌 打包前确认 checklist：
-•	plugin.xml 已配置 id、version、sinceBuild、untilBuild 等；
-•	Gradle intellij {} 配置已完成；
-•	项目能正常运行 ./gradlew runIde；
-•	如果你使用 Kotlin，需要配置 kotlin-stdlib 依赖；
-•	有多个子模块时，确认是在哪个模块运行 buildPlugin（一般是插件模块，而不是根项目）。
+
+- plugin.xml 已配置 id、version、sinceBuild、untilBuild 等；
+- Gradle intellij {} 配置已完成；
+- 项目能正常运行 ./gradlew runIde；
+- 如果你使用 Kotlin，需要配置 kotlin-stdlib 依赖；
+- 有多个子模块时，确认是在哪个模块运行 buildPlugin（一般是插件模块，而不是根项目）。
