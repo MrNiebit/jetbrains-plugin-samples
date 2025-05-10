@@ -1,0 +1,21 @@
+<idea-plugin>
+    <id>cn.lacknb.blog.sample01</id>
+    <name>sample01</name>
+    <version>1.0.0</version>
+    <vendor email="gitsilence@gmail.com" url="https://blog.lacknb.cn">gitsilence</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- 在这里注册扩展点 -->
+    </extensions>
+
+    <actions>
+        <!-- 在这里注册 Action -->
+        <!-- 注册一个右键菜单动作 -->
+        <action id="MyPlugin.Action" class="cn.lacknb.blog.sample01.MyPlugin" text="Show Greeting"
+                description="A demo action">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

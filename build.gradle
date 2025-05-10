@@ -1,0 +1,47 @@
+//buildscript {
+//    repositories {
+//        mavenLocal()
+//        maven { url 'https://maven.aliyun.com/repository/public' }
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+//        mavenCentral()
+//    }
+//    dependencies {
+//        // 示例依赖，按需添加插件 classpath
+//        // classpath "com.example:some-plugin:1.0.0"
+//    }
+//}
+//apply plugin: 'java'
+plugins {
+    id 'java'
+}
+
+allprojects {
+    group = 'cn.lacknb.blog'
+    version = '1.0-SNAPSHOT'
+    repositories {
+        mavenLocal() // 优先本地
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        mavenCentral() // 保底
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

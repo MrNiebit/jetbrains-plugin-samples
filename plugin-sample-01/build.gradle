@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.15.0'
+}
+
+group = 'cn.lacknb.blog'
+version = '1.0-SNAPSHOT'
+
+// 可以直接删除，因为父模块全局配置了
+//repositories {
+//    mavenLocal() // 优先读取本地仓库
+//    maven { url 'https://maven.aliyun.com/repository/public' }
+//    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+//    mavenCentral() // 保底兜底，仍保留原始中央仓库
+//}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+intellij {
+    // version 和 localPath只能保留其一，所以这里注释了
+    // version.set("2022.2")
+    plugins = ['java'] // 可选：依赖的插件（如 Java 支持）
+    updateSinceUntilBuild = false // 禁用版本范围检查
+    downloadSources = false // 下载源码（可选）
+    // 这里配置的是本地解压后的目录
+    localPath.set("/Users/gitsilence/JavaTools/gradle/gradle-7.3.3/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.2/42c296374014a649785bb84aa6d8dc2d18f2ca0e/ideaIC-2022.2")
+}
+
+tasks {
+    patchPluginXml {
+        changeNotes = """
+        Initial version of the plugin
+        """
+        sinceBuild = '222'  // 插件支持的最低版本（2022.2=222.*）
+        untilBuild = '222.*'  // 插件支持的最高版本
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
