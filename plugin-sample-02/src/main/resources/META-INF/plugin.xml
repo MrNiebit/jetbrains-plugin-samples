@@ -1,0 +1,44 @@
+<idea-plugin>
+    <!-- 插件唯一标识符，确保其唯一性 -->
+    <id>cn.lacknb.blog.ai-coding-assistant</id>
+    
+    <!-- 插件名称 -->
+    <name>AI Coding Assistant</name>
+    
+    <!-- 插件版本 -->
+    <version>1.0</version>
+    
+    <!-- 供应商信息 -->
+    <vendor email="support@example.com" url="http://www.example.com">Your Company</vendor>
+    
+    <!-- 插件描述 -->
+    <description><![CDATA[
+        AI编程助手插件，提供以下功能：<br>
+        - AI对话生成代码<br>
+        - 代码解释<br>
+        - 自动生成注释<br>
+        - 生成单元测试
+    ]]></description>
+    
+    <!-- 依赖 -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    
+    <!-- 扩展和操作定义 -->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- 注册工具窗口 -->
+        <!-- <toolWindow id="AI Assistant" secondary="true" icon="AllIcons.General.Modified" anchor="right" -->
+        <toolWindow id="AI Assistant" secondary="false" icon="AllIcons.Actions.IntentionBulb" anchor="right"
+                    factoryClass="cn.lacknb.blog.window.AIAssistantToolWindowFactory"/>
+        <!-- 注册方法图标提供者 -->
+        <codeInsight.lineMarkerProvider language="JAVA"
+                                      implementationClass="cn.lacknb.blog.linemarker.AIMethodLineMarkerProvider"/>
+    </extensions>
+    
+    <actions>
+        <!-- 注册方法图标动作组 -->
+        <group id="AIAssistant.MethodActions" class="cn.lacknb.blog.actions.AIMethodActionGroup" popup="true">
+            <add-to-group group-id="EditorGutterPopupMenu" anchor="first"/>
+        </group>
+    </actions>
+</idea-plugin>
